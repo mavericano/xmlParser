@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+    <tlib-version> 1.0 </tlib-version>
+    <short-name> devTable </short-name>
+    <uri> /WEB-INF/tld/taglib.tld </uri>
+    <tag>
+        <name> devices </name>
+        <tag-class>by.epamtc.xmlparser.tags.DeviceTable</tag-class>
+        <body-content> empty </body-content>
+        <attribute>
+            <name> devices </name>
+            <required> true </required>
+            <rtexprvalue> true </rtexprvalue> <!-- Разрешает динамические значения атрибута -->
+        </attribute>
+    </tag>
+</taglib>

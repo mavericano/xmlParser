@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<devices xmlns="http://www.epamtc.by/devices"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.epamtc.by/devices devices.xsd">
+    <device id="_1">
+        <name>HDD</name>
+        <origin>China</origin>
+        <price>42</price>
+        <type>
+            <ports>COM SATA</ports>
+            <group>Utility</group>
+            <energyConsumption>200</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>true</peripheral>
+        </type>
+        <critical>true</critical>
+        <arrivalDate>2021-10-11</arrivalDate>
+    </device>
+
+    <device id="_2" stock="2">
+        <name>SSD</name>
+        <origin>Pakistan</origin>
+        <price>435</price>
+        <type>
+            <ports>SATA</ports>
+            <group>Utility</group>
+            <energyConsumption>200</energyConsumption>
+            <cooler>true</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>true</critical>
+        <arrivalDate>2021-10-11</arrivalDate>
+    </device>
+
+    <device id="_3" stock="28">
+        <name>Cooler</name>
+        <origin>Pakistan</origin>
+        <price>300</price>
+        <type>
+            <ports></ports>
+            <group>Utility</group>
+            <energyConsumption>10</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>true</critical>
+        <arrivalDate>2018-09-30</arrivalDate>
+    </device>
+
+    <device id="_4" stock="0">
+        <name>CPU</name>
+        <origin>USA</origin>
+        <price>500</price>
+        <type>
+            <ports></ports>
+            <group>Computational</group>
+            <energyConsumption>80</energyConsumption>
+            <cooler>true</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>true</critical>
+        <arrivalDate>2001-09-11</arrivalDate>
+    </device>
+
+    <device id="_5" stock="42">
+        <name>Keyboard</name>
+        <origin>China</origin>
+        <price>155</price>
+        <type>
+            <ports>USB Type-C</ports>
+            <group>IO</group>
+            <energyConsumption>10</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>true</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2020-01-04</arrivalDate>
+    </device>
+
+    <device id="_6">
+        <name>GPU</name>
+        <origin>Canada</origin>
+        <price>340</price>
+        <type>
+            <ports>LPT SATA</ports>
+            <group>Graphic</group>
+            <energyConsumption>400</energyConsumption>
+            <cooler>true</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2020-08-12</arrivalDate>
+    </device>
+
+    <device id="_7" stock="320">
+        <name>Wireless mouse</name>
+        <origin>USA</origin>
+        <price>180</price>
+        <type>
+            <ports>Type-C</ports>
+            <group>IO</group>
+            <energyConsumption>10</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>true</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2021-12-24</arrivalDate>
+    </device>
+
+    <device id="_8">
+        <name>Motherboard</name>
+        <origin>Bangladesh</origin>
+        <price>500</price>
+        <type>
+            <ports>SATA USB LPT LAN COM</ports>
+            <group>Utility</group>
+            <energyConsumption>130</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>true</critical>
+        <arrivalDate>2015-05-14</arrivalDate>
+    </device>
+
+    <device id="_9" stock="20">
+        <name>SSD</name>
+        <origin>India</origin>
+        <price>405</price>
+        <type>
+            <ports>SATA</ports>
+            <group>Utility</group>
+            <energyConsumption>200</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2021-10-11</arrivalDate>
+    </device>
+
+    <device id="_10" stock="82">
+        <name>GPU</name>
+        <origin>USA</origin>
+        <price>285</price>
+        <type>
+            <ports>LPT</ports>
+            <group>Graphic</group>
+            <energyConsumption>200</energyConsumption>
+            <cooler>true</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2021-10-11</arrivalDate>
+    </device>
+
+    <device id="_11" stock="89">
+        <name>Keyboard</name>
+        <origin>Pakistan</origin>
+        <price>220</price>
+        <type>
+            <ports>Type-C USB</ports>
+            <group>IO</group>
+            <energyConsumption>200</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>true</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2020-11-11</arrivalDate>
+    </device>
+
+    <device id="_12" stock="0">
+        <name>Flash drive</name>
+        <origin>Kazakhstan</origin>
+        <price>10</price>
+        <type>
+            <ports>USB</ports>
+            <group>Utility</group>
+            <energyConsumption>0</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>true</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2001-07-05</arrivalDate>
+    </device>
+
+    <device id="_13" stock="300">
+        <name>CD-ROM</name>
+        <origin>China</origin>
+        <price>85</price>
+        <type>
+            <ports>SATA</ports>
+            <group>IO</group>
+            <energyConsumption>30</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2007-05-19</arrivalDate>
+    </device>
+
+    <device id="_14">
+        <name>SSD</name>
+        <origin>Pakistan</origin>
+        <price>435</price>
+        <type>
+            <ports>SATA</ports>
+            <group>IO</group>
+            <energyConsumption>200</energyConsumption>
+            <cooler>true</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>true</critical>
+        <arrivalDate>2021-10-11</arrivalDate>
+    </device>
+
+    <device id="_15" stock="209">
+        <name>HDD</name>
+        <origin>India</origin>
+        <price>100</price>
+        <type>
+            <ports>SATA COM</ports>
+            <group>Utility</group>
+            <energyConsumption>230</energyConsumption>
+            <cooler>false</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>false</critical>
+        <arrivalDate>2008-05-23</arrivalDate>
+    </device>
+
+    <device id="_16" stock="2">
+        <name>SSD</name>
+        <origin>Pakistan</origin>
+        <price>435</price>
+        <type>
+            <ports>SATA</ports>
+            <group>IO</group>
+            <energyConsumption>200</energyConsumption>
+            <cooler>true</cooler>
+            <peripheral>false</peripheral>
+        </type>
+        <critical>true</critical>
+        <arrivalDate>2021-10-11</arrivalDate>
+    </device>
+</devices>

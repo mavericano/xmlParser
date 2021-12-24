@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns="http://www.epamtc.by/devices"
+           targetNamespace="http://www.epamtc.by/devices"
+           >
+  <!--PRICE-->
+  <xs:simpleType name="price">
+    <xs:restriction base="xs:unsignedInt">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--PORTS-->
+  <xs:simpleType name="ports">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="COM"/>
+          <xs:enumeration value="USB"/>
+          <xs:enumeration value="LPT"/>
+          <xs:enumeration value="SATA"/>
+          <xs:enumeration value="Type-C"/>
+          <xs:enumeration value="LAN"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <!--GROUP-->
+  <xs:simpleType name="group">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IO"/>
+      <xs:enumeration value="Multimedia"/>
+      <xs:enumeration value="Graphic"/>
+      <xs:enumeration value="Computational"/>
+      <xs:enumeration value="Utility"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--TYPE-->
+  <xs:complexType name="type">
+    <xs:all>
+      <xs:element name="group" type="group"/>
+      <xs:element name="ports" type="ports" minOccurs="0"/>
+      <xs:element name="peripheral" type="xs:boolean"/>
+      <xs:element name="cooler" type="xs:boolean"/>
+      <xs:element name="energyConsumption" type="xs:unsignedInt"/>
+    </xs:all>
+  </xs:complexType>
+  <!--DEVICE-->
+
+  <xs:complexType name="device">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="origin"/>
+      <xs:element type="price" name="price"/>
+      <xs:element type="type" name="type"/>
+      <xs:element type="xs:string" name="critical"/>
+      <xs:element type="xs:date" name="arrivalDate"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="stock" type="xs:unsignedInt" default="0"/>
+  </xs:complexType>
+  <xs:element name="devices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="device" type="device" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
