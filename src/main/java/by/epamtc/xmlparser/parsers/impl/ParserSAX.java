@@ -4,8 +4,8 @@ import by.epamtc.xmlparser.bean.Device;
 
 import by.epamtc.xmlparser.parsers.Parser;
 import by.epamtc.xmlparser.parsers.ParserException;
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -14,7 +14,6 @@ import javax.servlet.http.Part;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +25,7 @@ import java.util.regex.Pattern;
 
 public class ParserSAX implements Parser {
     private List<Device> devices;
-    //private static final Logger logger = LoggerFactory.getLogger(ParserSAX.class);
+    private static final Logger logger = LogManager.getLogger(ParserSAX.class);
 
     public List<Device> parse(Part part) throws ParserException {
         try {
@@ -38,8 +37,8 @@ public class ParserSAX implements Parser {
             parser.parse(part.getInputStream(), handler);
         } catch (IOException | SAXException | ParserConfigurationException e) {
             devices = new ArrayList<>();
-            //logger.error(e.getMessage());
-            throw new ParserException(e.getMessage(), e);
+            logger.error(e.getClass().getSimpleName() + " while parsing xml");
+            throw new ParserException(e.getClass().getSimpleName() + " while parsing xml", e);
         }
 
         return devices;
@@ -50,12 +49,12 @@ public class ParserSAX implements Parser {
         private String currentElement;
 
         @Override
-        public void startDocument() throws SAXException {
+        public void startDocument() {
             currentDevice = new Device();
         }
 
         @Override
-        public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        public void startElement(String uri, String localName, String qName, Attributes attributes) {
             currentElement = qName;
             if ("device".equals(currentElement)) {
                currentDevice.setId(Integer.parseInt(attributes.getValue("id").replaceAll("_", "")));
@@ -67,7 +66,7 @@ public class ParserSAX implements Parser {
         }
 
         @Override
-        public void endElement(String uri, String localName, String qName) throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if ("device".equals(qName)) {
                 devices.add(currentDevice);
                 currentDevice = new Device();
@@ -135,7 +134,8 @@ public class ParserSAX implements Parser {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 return formatter.parse(info);
             } catch (ParseException e) {
-                throw new SAXException("Ошибка при чтении даты", e);
+                logger.error(e.getClass().getSimpleName() + " while parsing Arrival Date");
+                throw new SAXException(e.getClass().getSimpleName() + " while parsing Arrival Date", e);
             }
         }
     }

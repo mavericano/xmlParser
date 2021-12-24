@@ -7,7 +7,7 @@ import by.epamtc.xmlparser.controller.commandImpl.WrongCommand;
 import java.util.HashMap;
 
 public class CommandProvider {
-    private HashMap<String, Command> commands = new HashMap<>();
+    private final HashMap<String, Command> commands = new HashMap<>();
     private final static CommandProvider instance = new CommandProvider();
 
     private CommandProvider(){

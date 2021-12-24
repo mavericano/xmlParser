@@ -1,3 +1,5 @@
+<%--suppress ALL --%>
+<%--suppress ALL --%>
 <%--
   Created by IntelliJ IDEA.
   User: ivan_gavrilovich

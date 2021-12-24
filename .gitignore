@@ -1,7 +1,6 @@
 /out
 /.idea
 /lib
-/out
 /target
 .DS_Store
 xmlParser.iml

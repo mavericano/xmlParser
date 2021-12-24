@@ -5,7 +5,6 @@ import by.epamtc.xmlparser.parsers.Parser;
 import by.epamtc.xmlparser.parsers.ParserException;
 
 import javax.servlet.http.Part;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UnknownParser implements Parser {

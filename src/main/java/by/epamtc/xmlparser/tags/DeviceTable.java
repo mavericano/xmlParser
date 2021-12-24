@@ -1,6 +1,8 @@
 package by.epamtc.xmlparser.tags;
 
 import by.epamtc.xmlparser.bean.Device;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -10,6 +12,7 @@ import java.util.List;
 
 public class DeviceTable extends TagSupport {
     private List<Device> devices;
+    private static final Logger logger = LogManager.getLogger(DeviceTable.class);
 
     public List<Device> getDevices() {
         return devices;
@@ -81,6 +84,7 @@ public class DeviceTable extends TagSupport {
             }
             out.write("</table>");
         } catch (IOException e) {
+            logger.error(e.getClass().getSimpleName() + " while processing custom table tag");
             throw new JspException(e.getMessage(), e);
         }
 

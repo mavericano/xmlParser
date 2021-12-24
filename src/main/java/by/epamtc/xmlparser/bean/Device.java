@@ -153,8 +153,7 @@ public class Device implements Serializable {
 
     public String getFormattedArrivalDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        String res = sdf.format(arrivalDate);
-        return res;
+        return sdf.format(arrivalDate);
     }
 
     public void setArrivalDate(Date arrivalDate) {

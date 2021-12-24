@@ -3,6 +3,8 @@ package by.epamtc.xmlparser.parsers.impl;
 import by.epamtc.xmlparser.bean.Device;
 import by.epamtc.xmlparser.parsers.Parser;
 import by.epamtc.xmlparser.parsers.ParserException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.Part;
 import javax.xml.namespace.QName;
@@ -13,8 +15,6 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +25,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParserStAX implements Parser {
-    private List<Device> devices = new ArrayList<>();
+    private final List<Device> devices = new ArrayList<>();
+    private static final Logger logger = LogManager.getLogger(ParserStAX.class);
 
     @Override
     public List<Device> parse(Part part) throws ParserException {
@@ -93,7 +94,8 @@ public class ParserStAX implements Parser {
             }
 
         } catch (IOException | XMLStreamException e) {
-            throw new ParserException(e.getMessage(), e);
+            logger.error(e.getClass().getSimpleName() + " while parsing xml");
+            throw new ParserException(e.getClass().getSimpleName() + " while parsing xml", e);
         }
 
         return devices;
@@ -119,7 +121,8 @@ public class ParserStAX implements Parser {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             return formatter.parse(info);
         } catch (ParseException e) {
-            throw new ParserException("Ошибка при чтении даты", e);
+            logger.error(e.getClass().getSimpleName() + " while parsing Arrival Date");
+            throw new ParserException(e.getClass().getSimpleName() + " while parsing Arrival Date", e);
         }
     }
 }

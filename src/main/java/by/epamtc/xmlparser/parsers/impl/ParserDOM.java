@@ -4,12 +4,13 @@ import by.epamtc.xmlparser.parsers.Parser;
 import by.epamtc.xmlparser.parsers.ParserException;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.servlet.http.Part;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,10 +23,10 @@ import java.util.regex.Pattern;
 import by.epamtc.xmlparser.bean.Device;
 
 public class ParserDOM implements Parser {
-    private List<Device> devices = new ArrayList<>();
+    private final List<Device> devices = new ArrayList<>();
+    private static final Logger logger = LogManager.getLogger(ParserDOM.class);
 
     public List<Device> parse(Part part) throws ParserException {
-        //File inputFile = new File(path);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -40,7 +41,8 @@ public class ParserDOM implements Parser {
                 devices.add(currentDevice);
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            throw new ParserException(e.getMessage(), e);
+            logger.error(e.getClass().getSimpleName() + " while parsing xml");
+            throw new ParserException("Error while parsing xml", e);
         }
 
         return devices;
@@ -78,7 +80,8 @@ public class ParserDOM implements Parser {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             return formatter.parse(info);
         } catch (ParseException e) {
-            throw new ParserException("Ошибка при чтении даты", e);
+            logger.error(e.getClass().getSimpleName() + " while parsing Arrival Date");
+            throw new ParserException("Error while parsing Arrival Date", e);
         }
     }
 

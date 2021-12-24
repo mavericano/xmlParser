@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ReturnToMenu implements Command {
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("viewer.jsp");
     }
 }

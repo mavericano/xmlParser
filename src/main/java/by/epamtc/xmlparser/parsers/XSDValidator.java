@@ -1,5 +1,7 @@
 package by.epamtc.xmlparser.parsers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import javax.servlet.http.Part;
@@ -12,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class XSDValidator {
+    private static final Logger logger = LogManager.getLogger(XSDValidator.class);
     public static boolean isValid(Part filePart, String schemaPath) {
         SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
         File schemaLocation = new File(schemaPath);
@@ -22,6 +25,7 @@ public class XSDValidator {
             validator.validate(source);
             return true;
         } catch (IOException | SAXException e) {
+            logger.error(e.getClass().getSimpleName() + " while validating xml [CONTROLLED]");
             return false;
         }
     }
