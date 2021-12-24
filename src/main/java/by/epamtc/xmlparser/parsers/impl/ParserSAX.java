@@ -10,6 +10,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.servlet.http.Part;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -27,14 +28,14 @@ public class ParserSAX implements Parser {
     private List<Device> devices;
     //private static final Logger logger = LoggerFactory.getLogger(ParserSAX.class);
 
-    public List<Device> parse(String path) throws ParserException {
+    public List<Device> parse(Part part) throws ParserException {
         try {
             devices = new ArrayList<>();
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
 
             EventHandler handler = new EventHandler();
-            parser.parse(new File(path), handler);
+            parser.parse(part.getInputStream(), handler);
         } catch (IOException | SAXException | ParserConfigurationException e) {
             devices = new ArrayList<>();
             //logger.error(e.getMessage());

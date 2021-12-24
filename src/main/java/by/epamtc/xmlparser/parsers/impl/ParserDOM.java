@@ -5,6 +5,7 @@ import by.epamtc.xmlparser.parsers.ParserException;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
+import javax.servlet.http.Part;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,12 +24,12 @@ import by.epamtc.xmlparser.bean.Device;
 public class ParserDOM implements Parser {
     private List<Device> devices = new ArrayList<>();
 
-    public List<Device> parse(String path) throws ParserException {
-        File inputFile = new File(path);
+    public List<Device> parse(Part part) throws ParserException {
+        //File inputFile = new File(path);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(inputFile);
+            Document doc = builder.parse(part.getInputStream());
             doc.getDocumentElement().normalize();
             NodeList nodes = doc.getElementsByTagName("device");
             Device currentDevice;

@@ -4,6 +4,7 @@ import by.epamtc.xmlparser.bean.Device;
 import by.epamtc.xmlparser.parsers.Parser;
 import by.epamtc.xmlparser.parsers.ParserException;
 
+import javax.servlet.http.Part;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -14,6 +15,7 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,12 +28,12 @@ public class ParserStAX implements Parser {
     private List<Device> devices = new ArrayList<>();
 
     @Override
-    public List<Device> parse(String path) throws ParserException {
+    public List<Device> parse(Part part) throws ParserException {
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         Device currentDevice = null;
 
         try {
-            XMLEventReader reader = xmlInputFactory.createXMLEventReader(new FileInputStream(path));
+            XMLEventReader reader = xmlInputFactory.createXMLEventReader(part.getInputStream());
             while (reader.hasNext()) {
                 XMLEvent xmlEvent = reader.nextEvent();
                 if (xmlEvent.isStartElement()) {
@@ -90,7 +92,7 @@ public class ParserStAX implements Parser {
                 }
             }
 
-        } catch (FileNotFoundException | XMLStreamException e) {
+        } catch (IOException | XMLStreamException e) {
             throw new ParserException(e.getMessage(), e);
         }
 

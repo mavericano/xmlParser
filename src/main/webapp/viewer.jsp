@@ -16,7 +16,7 @@
     <a>This is viewer.jsp</a>
     <br/>
     <form action = "controller" method = "post" enctype = "multipart/form-data">
-        <input type="hidden" name="command" value="VIEW_TABLE"/>
+        <input hidden name="command" value="VIEW_TABLE"/>
         Select parser:
         <select name="parserType" size="1">
             <option value="SAX">SAX</option>
